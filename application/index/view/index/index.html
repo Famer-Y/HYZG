@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>展示</title>
+  <!-- 引入boostrap -->
+  <script type="text/javascript" src="__STATIC__/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css">
+  <!-- 引入jquery -->
+  <script type="text/javascript" src="__STATIC__/jquery/jquery-3.3.1.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 top">
+				<div class="row">
+					<div class="col-md-8">
+						<div id="zx" style="width: 100%; height: 100%; margin: 0 auto"></div>
+					</div>
+					<div class="col-md-4" style="padding-top: 20px;">
+						<div class="row">
+							<div class="col-md-12 group">
+								<div class="row group-3d">								
+									<div class="col-md-9">
+										<div class="progress">
+									    <div id="progress-3d" class="my-progress-bar progress-color-3d" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+									       <span id="progressbar-3d-text"></span>
+									    </div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<span>3D组</span>
+									</div>																			
+								</div>
+							</div>
+							<div class="col-md-12 group">
+								<div class="row group-ht">							
+									<div class="col-md-9">
+										<div class="progress">
+									    <div id="progress-ht" class="my-progress-bar progress-color-ht" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+									       <span id="progressbar-ht-text"></span>
+									    </div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<span>画图组</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12 group">
+								<div class="row group-cv">								
+									<div class="col-md-9">
+										<div class="progress">
+									    <div id="progress-cv" class="my-progress-bar progress-color-cv" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+									       <span id="progressbar-cv-text"></span>
+									    </div>
+										</div>
+									</div>						
+									<div class="col-md-3">
+										<span>配音组</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row group-hq">								
+									<div class="col-md-9">
+										<div class="progress">
+									    <div id="progress-hq" class="my-progress-bar progress-color-hq" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+									       <span id="progressbar-hq-text"></span>
+									    </div>
+										</div>
+									</div>						
+									<div class="col-md-3">
+										<span>后期组</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 bottom">
+				<div class="text-center"><h2>荒野之歌</h2></div>
+				<div class="progress" style="height: 40px">
+			    <div id="progress-all" class="progress-bar progress-color-all" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+			       <span id="progressbar-all-text" style="font-size: 20px; line-height: 40px;"></span>
+			    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="__STATIC__/Highcharts-6.1.0/code/highcharts.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function () {
+        var percentage_3d = 0;
+        var percentage_ht = 0;
+        var percentage_cv = 0;
+        var percentage_hq = 0;
+        var percentage_all = 0;
+        var interval_3d = setInterval(function () {
+            if (percentage_3d < {$group_3d}) {
+                percentage_3d ++;
+                var widthTemp = (percentage_3d / 10).toFixed(1) + '%';
+                $('#progress-3d').css('width', widthTemp);
+                $('#progressbar-3d-text').text(widthTemp);
+            } else {
+                clearInterval(interval_3d);
+            }
+        }, 1);
+        var interval_ht = setInterval(function () {
+            if (percentage_ht < {$group_ht}) {
+                percentage_ht ++;
+                var widthTemp = (percentage_ht / 10).toFixed(1) + '%';
+                $('#progress-ht').css('width', widthTemp);
+                $('#progressbar-ht-text').text(widthTemp);
+            } else {
+                clearInterval(interval_ht);
+            }
+        }, 1);
+        var interval_cv = setInterval(function () {
+            if (percentage_cv < {$group_cv}) {
+                percentage_cv ++;
+                var widthTemp = (percentage_cv / 10).toFixed(1) + '%';
+                $('#progress-cv').css('width', widthTemp);
+                $('#progressbar-cv-text').text(widthTemp);
+            } else {
+                clearInterval(interval_cv);
+            }
+        }, 1);
+        var interval_hq = setInterval(function () {
+            if (percentage_hq < {$group_hq}) {
+                percentage_hq ++;
+                var widthTemp = (percentage_hq / 10).toFixed(1) + '%';
+                $('#progress-hq').css('width', widthTemp);
+                $('#progressbar-hq-text').text(widthTemp);
+            } else {
+                clearInterval(interval_hq);
+            }
+        }, 1);
+        var interval_all = setInterval(function () {
+            if (percentage_all < {$all}) {
+                percentage_all ++;
+                var widthTemp = (percentage_all / 10).toFixed(1) + '%';
+                $('#progress-all').css('width', widthTemp);
+                if (percentage_all < 160) {
+                	$('#progressbar-all-text').text(widthTemp);
+                }else {
+                	$('#progressbar-all-text').text("已经做了" + widthTemp + "啦~~");
+                }                
+            } else {
+                clearInterval(interval_all);
+            }
+        }, 1);
+
+      Highcharts.setOptions({
+			    colors: ['#74F290', '#45E6FF', '#F99122', '#B702FB']
+			}); 
+       var title = {
+		      text: '各组进度'   
+		   };
+		   var subtitle = {
+		      text: '来源: 氢核引擎制作组'
+		   };
+		   var xAxis = {
+		      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+		         'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+		   };
+		   var yAxis = {
+		      title: {
+		         text: '进度 (%)'
+		      },
+		      plotLines: [{
+		         value: 0,
+		         width: 1,
+		         color: '#808080'
+		      }]
+		   };   
+
+		   var tooltip = {
+		      valueSuffix: '%'
+		   }
+
+		   var legend = {
+		      layout: 'vertical',
+		      align: 'right',
+		      verticalAlign: 'middle',
+		      borderWidth: 0
+		   };
+
+		   var series =  [
+		      {
+		         name: '3D组',
+		         data: {$rate_group_3d}
+		      }, 
+		      {
+		         name: '画图组',
+		         data: {$rate_group_ht}
+		      },
+		      {
+		         name: '配音组',
+		         data: {$rate_group_cv}
+		      },
+		      {
+		         name: '后期组',
+		         data: {$rate_group_hq}
+		      }		      
+		   ];
+
+		   var json = {};
+
+		   json.title = title;
+		   json.subtitle = subtitle;
+		   json.xAxis = xAxis;
+		   json.yAxis = yAxis;
+		   json.tooltip = tooltip;
+		   json.legend = legend;
+		   json.series = series;
+
+		   $('#zx').highcharts(json);
+    });
+</script>
+</body>
+</html>

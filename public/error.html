@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>错误</title>
+    {include file="common/head" /}
+</head>
+
+<body>
+<header>
+	<!--Top-->
+	{include file="common/nav_top" /}
+	{include file="common/nav" /}
+</header>
+
+	<!-- /////////////////////////////////////////Content -->
+	<div class="container">
+		<div class="row">
+			<!-- ERROR -->
+			<div id="alertErr" class="widget col-md-12">
+				<div class="heading"><h4>>_<ERROR>_<</h4></div>
+				<div class="content">
+					<div class="bg-danger">
+						<h4><?php echo(strip_tags($msg));?></h4>
+						<p class="jump">
+				            页面自动 <a id="href" href="<?php echo($url);?>">跳转</a> 等待时间： <b id="wait"><?php echo($wait);?></b>
+				        </p>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+			<!-- ERROR -->
+	</div>
+
+	{include file="common/footer" /}
+	<!-- Footer -->
+		<script type="text/javascript">
+        (function(){
+            var wait = document.getElementById('wait'),
+                href = document.getElementById('href').href;
+            var interval = setInterval(function(){
+                var time = --wait.innerHTML;
+                if(time <= 0) {
+                    location.href = href;
+                    clearInterval(interval);
+                };
+            }, 1000);
+        })();
+    </script>
+</body>
+</html>
